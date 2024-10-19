@@ -1,0 +1,31 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+
+# Django migration files
+*/migrations/*
+!*/migrations/__init__.py
+
+# Environment variables
+.env
+*.env
+/env
+
+# IDE/Editor specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Database
+db.sqlite3
+
+# Static files
+/static/
+*.log
+
+# Local development settings
+local_settings.py
+
+# Jupyter Notebook
+.ipynb_checkpoints
