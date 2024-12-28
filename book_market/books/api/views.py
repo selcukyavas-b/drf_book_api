@@ -21,13 +21,13 @@ class BookListCreateAPIView(generics.ListCreateAPIView):
     serializer_class = BookSerializer
     permission_classes=[permissions.IsAuthenticatedOrReadOnly]
     def perform_create(self, serializer):
-        user = self.request.user  # Giriş yapan kullanıcıyı al
+        user = self.request.user
         serializer.save(author=user)  
 
 class BookDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-    permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticatedOrReadOnly] # Giriş yapılmadıysa sadece görüntüleme
+    permission_classes = [IsAuthorOrReadOnly, permissions.IsAuthenticatedOrReadOnly]
 
 class CommentCreateAPIView(generics.CreateAPIView):
     queryset = Comment.objects.all()
@@ -47,20 +47,9 @@ class CommentCreateAPIView(generics.CreateAPIView):
 class CommentDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Comment.objects.all()
     serializer_class = CommentSerializer
-    permission_classes=[IsCommentOwnerOrReadOnly, permissions.IsAuthenticatedOrReadOnly] # Yalnızca sahip olan kullanıcı düzenleyebilir.
+    permission_classes=[IsCommentOwnerOrReadOnly, permissions.IsAuthenticatedOrReadOnly]
     
 
 
-
-
-# class BookListCreateAPIView(ListModelMixin,CreateModelMixin,GenericAPIView):
-#     queryset = Book.objects.all()
-#     serializer_class = BookSerializer
-
-#     def get(self,request, *args, **kwargs):
-#         return self.list(self, request, *args, **kwargs)
-    
-#     def post(self,request,*args, **kwargs):
-#         return self.create(self, request, *args, **kwargs)
 
 

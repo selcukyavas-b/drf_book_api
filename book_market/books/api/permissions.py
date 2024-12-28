@@ -13,17 +13,11 @@ class IsCommentOwnerOrReadOnly(permissions.BasePermission):
     
     
 class IsAuthorOrReadOnly(permissions.BasePermission):
-    """
-    Yalnızca yazar kendi kitabını düzenleyebilir veya silebilir.
-    Diğer kullanıcılar sadece okuyabilir.
-    """
-    
     def has_object_permission(self, request, view, obj):
-        # SAFE_METHODS (GET, HEAD, OPTIONS) işlemlerine her zaman izin verilir.
         if request.method in permissions.SAFE_METHODS:
             return True
         
-        # Diğer durumlarda, kullanıcı yalnızca kendi kitabını düzenleyebilir veya silebilir.
+
         return obj.author == request.user
     
     

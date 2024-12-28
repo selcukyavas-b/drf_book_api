@@ -6,8 +6,7 @@ from django.contrib.auth.models import User
 
 
 # class CustomRegisterSerializer(RegisterSerializer):
-#     username = None  # Eğer kullanıcı adı istemiyorsanız
-
+#     username = None
 #     def validate_email(self, email):
 #         email = email.lower()
 #         if User.objects.filter(email=email).exists():
@@ -28,10 +27,10 @@ class CategorySerializer(serializers.ModelSerializer):
         fields ='__all__'
 
 class BookSerializer(serializers.ModelSerializer):
-    author = serializers.StringRelatedField(read_only=True)  # Author bilgisi okunabilir olur
+    author = serializers.StringRelatedField(read_only=True)
     comments= CommentSerializer(many=True, read_only=True)
     categories = serializers.SlugRelatedField(
-        slug_field='name', queryset=Category.objects.all(), many=True  # Kategori isimlerinden seçim yapılacak
+        slug_field='name', queryset=Category.objects.all(), many=True
     )
 
     class Meta:

@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'django_extensions',
     'books.apps.BooksConfig',
-    'django.contrib.sites',  # django-allauth için gerekli
+    'django.contrib.sites',  
     'rest_framework_simplejwt',
     'dj_rest_auth',
     'allauth',
@@ -52,9 +52,9 @@ INSTALLED_APPS = [
 
     'rest_framework_simplejwt.token_blacklist',
 ]
-# Django Allauth ayarları
+
 SITE_ID = 1
-ACCOUNT_EMAIL_VERIFICATION = 'none'  # E-posta doğrulamasını atlamak için
+ACCOUNT_EMAIL_VERIFICATION = 'none' 
 ACCOUNT_AUTHENTICATION_METHOD = 'username'
 ACCOUNT_EMAIL_REQUIRED = True
 
@@ -91,8 +91,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'book_market.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+
 
 DATABASES = {
     'default': {
@@ -102,8 +101,6 @@ DATABASES = {
 }
 
 
-# Password validation
-# https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -121,8 +118,6 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/5.1/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
@@ -133,17 +128,14 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
+
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# REST Framework ayarları
+ı
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -155,18 +147,18 @@ REST_AUTH = {
     'JWT_AUTH_HTTPONLY': False,
 }
 
-# Spectacular ayarları
+
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Your API',
     'DESCRIPTION': 'API for managing books.',
     'VERSION': '1.0.0',
-    'SCHEMA_PATH_PREFIX': '/api/',  # API yolu için önek
+    'SCHEMA_PATH_PREFIX': '/api/',
 }
 
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=5),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=1),
-    "TOKEN_BLACKLIST_ENABLED": True,  # Blacklist özelliğini etkinleştir
-    "BLACKLIST_AFTER_ROTATION": True,  # Token'ı değiştirdikten sonra blacklist'e al
+    "TOKEN_BLACKLIST_ENABLED": True,
+    "BLACKLIST_AFTER_ROTATION": True, 
 
 }
