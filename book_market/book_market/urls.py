@@ -25,6 +25,7 @@ from dj_rest_auth.views import LoginView, LogoutView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('books.api.urls')),
+    path('api-auth/', include('rest_framework.urls')),#api arayüzünde login sayfası gelsin diye.
 
     # Kimlik doğrulama için
     path('api/auth/', include('dj_rest_auth.urls')),
